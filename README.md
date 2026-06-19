@@ -28,7 +28,8 @@ python ssh_connector.py
 
 Скрипт запросит:
 - IP адрес устройства
-- Пароль (username захардкожен как `root`)
+- Username устройства
+- Пароль
 
 ---
 
