@@ -1,3 +1,4 @@
+import getpass
 from netmiko.huawei.huawei import HuaweiSSH
 from netmiko import (NetmikoTimeoutException, NetmikoAuthenticationException)
 from time import sleep
@@ -16,11 +17,10 @@ def search_index(output_text):
     return None
      
 
-print("Данный SSH_Connector работает исключительно на старом оборудовании huawei\n\n")  
-print("Введите IP Адрес:")       
-host = input()
-print("Введите пароль")
-password = input()
+print("Данный SSH_Connector работает со старой версии прошивки оборудования huawei\n\n")        
+host = input("Введите IP Адрес: ")
+username = input("Введите username: ").strip()
+password = getpass.getpass("Введите пароль: ")
 
 conn = None
 
@@ -49,7 +49,7 @@ try:
     
 except NetmikoTimeoutException:
     print(f"\nХост {host} недоступен или не отвечает")
-    print("Проверьте правильно ли введен IP")
+    print("Проверьте правильность ввода")
     
 except NetmikoAuthenticationException:
     print(f"\nОшибка авторизации на хост {host}")
